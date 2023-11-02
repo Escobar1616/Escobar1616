@@ -22,6 +22,20 @@
 
         .logo {
             width: 200px;
+            opacity: 0; /* 最初は非表示 */
+            animation: fadeInFromTop 1s ease-in-out forwards; /* 上からフェードイン */
+
+            /* アニメーションのキーフレームを定義 */
+            @keyframes fadeInFromTop {
+                from {
+                    transform: translateY(-50px); /* 上から50px上に移動 */
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0); /* 元の位置 */
+                    opacity: 1;
+                }
+            }
         }
 
         .image-container {
@@ -32,15 +46,29 @@
 
         .image {
             width: 50px;
-			height: 50px;
+            height: 50px;
             margin: 10px;
             cursor: pointer;
+            opacity: 0; /* 最初は非表示 */
+            animation: fadeInFromBottom 1s ease-in-out forwards; /* 下からフェードイン */
+
+            /* アニメーションのキーフレームを定義 */
+            @keyframes fadeInFromBottom {
+                from {
+                    transform: translateY(50px); /* 下から50px下に移動 */
+                    opacity: 0;
+                }
+                to {
+                    transform: translateY(0); /* 元の位置 */
+                    opacity: 1;
+                }
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <img class="logo" src="images\logo.png" alt="Logo">
+        <img class="logo" src="./images/logo.png" alt="Logo">
     </div>
 
     <div class="image-container">
@@ -63,5 +91,18 @@
             <img class="image" src="./images/youtube.png" alt="Image 6">
         </a>
     </div>
+
+    <script>
+        window.addEventListener("load", function() {
+            const logo = document.querySelector(".logo");
+            const images = document.querySelectorAll(".image");
+            setTimeout(() => {
+                logo.style.animationPlayState = "running";
+                images.forEach(image => {
+                    image.style.animationPlayState = "running";
+                });
+            }, 500);
+        });
+    </script>
 </body>
 </html>
