@@ -91,5 +91,19 @@
             <img class="image" src="images\youtube.png" alt="Image 6">
         </a>
     </div>
+
+    <script>
+        // スクリプトで適用時機を遅らせる
+        window.addEventListener("load", function() {
+            const logo = document.querySelector(".logo");
+            const images = document.querySelectorAll(".image");
+            setTimeout(() => {
+                logo.style.animationPlayState = "running";
+                images.forEach(image => {
+                    image.style.animationPlayState = "running";
+                });
+            }, 500); // 500ミリ秒の遅延
+        });
+    </script>
 </body>
 </html>
